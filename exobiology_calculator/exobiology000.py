@@ -1,6 +1,6 @@
 '''
 Created 20230804
-@author: BrianHolden
+@author: BrianHolden0
 '''
 
 from exobiology1 import exochoice
