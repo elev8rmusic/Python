@@ -1,0 +1,35 @@
+'''
+Created 20230906
+@author: BrianHolden0
+'''
+
+Flag = 1
+
+### Repeating prompt to obtain the proper Class C IPv4 subnet to dissect.
+### The prompt only repeats if the user indicates that the inputted IP address is incorrect.
+while Flag != 0:
+    print(" ")
+    ipaddress = input("Enter the desired /24 IPv4 address for subnet calculation: ")
+    print(" ")
+
+    ### Split the inputted /24 IP address into four parts so that the last octet can be addressed alone.
+    octet = ipaddress.split('.')
+    octet_1 = octet[0]
+    octet_2 = octet[1]
+    octet_3 = octet[2]
+    octet_4 = octet[3]
+
+    ### Ask the user if the inputted IP address is correct. If yes: move on to dissection. If no: repeat the prompt.
+    confirmPrefix = input("Is the IPv4 prefix %s.%s.%s.0/24 the prefix that you want to dissect? Y/N: "  %(octet_1, octet_2, octet_3))
+    print(" ")
+    if confirmPrefix.upper() == "Y":
+        Flag = 0
+    if confirmPrefix.upper() == "N":
+        Flag = 1
+    else:
+        print("Please enter only 'Y' or 'N'")
+
+
+for x in range(1, 256):
+###    list.append(octet_1 + separator + octet_2 + separator + octet_3 + separator + str(x))
+    print(octet_1 + "." + octet_2 + "." + octet_3 + "." + str(x))
